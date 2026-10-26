@@ -1,0 +1,25 @@
+[package]
+name = "sketchshot"
+version = "0.1.2"
+description = "SketchShot 스케치샷"
+edition = "2021"
+
+[lib]
+name = "sketchshot_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+tauri-plugin-single-instance = "2"
+urlencoding = "2"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true
+panic = "abort"
